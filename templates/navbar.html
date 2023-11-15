@@ -1,0 +1,58 @@
+{% load static %}
+
+<!-- Header Section -->
+<header class="header">
+  <div class="container container--narrow">
+    <a href="{% url 'profiles' %}" class="header__lpythogo" id="new"><span class="span">መሶብ</span>
+      <img src="{% static 'images/MESOB.PNG' %}" alt="mesobSearch Logo" class="mesob"/> <span class="span">SEARCH</span> 
+      <!-- <h3>መሶብ Search</h3> -->
+    </a>
+    <Style>
+      .mesob {
+        height: 50px;
+        width: 50px;
+        box-shadow: 10px 10px #000 rgb(0, 0, 0,.1);
+        /* margin-top: 20px; */
+        margin-left: 2px;
+        margin-right: 2px;
+      }
+      .SEARCH {
+        
+        font-family: cursive;
+        font-weight: 500;
+        /* margin-left: -80px; */
+      }
+      .span {
+        color: #E1D9D1;
+        /* display: flex; */
+        /* padding-right: 70px; */
+        /* padding: 60px; */
+      }
+
+    </Style>
+    <nav class="header__nav">
+      <input type="checkbox" id="responsive-menu" />
+      <label for="responsive-menu" class="toggle-menu">
+        <span>Menu</span>
+        <div class="toggle-menu__lines"></div>
+      </label>
+      <ul class="header__menu">
+        <li class="header__menuItem"><a href="{% url 'profiles' %}">Entrepreneurs</a></li>
+        <li class="header__menuItem"><a href="{% url 'projects' %}">Projects</a></li>
+        <li class="header__menuItem"><a href="">Inbox</a></li>
+        
+        
+         {% if request.user.is_authenticated %}
+         <li class="header__menuItem"><a href="{% url 'account' %}">Account</a></li>
+         <li class="header__menuItem"><a href="{% url 'logout' %}" class="btn btn--sub">Logout</a></li>
+        
+         {% else %}
+
+        <li class="header__menuItem"><a href="{% url 'login' %}" class="btn btn--sub">Login/Sign Up</a></li>
+      
+        {% endif %}
+
+      </ul>
+    </nav>
+  </div>
+</header>
